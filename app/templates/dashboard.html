@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quotation Flow Monitor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #e5e7eb;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #38bdf8;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .alert {
+            background: #7f1d1d;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📊 Quotation Flow Monitor</h1>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Total</h3>
+            <p>{{ total }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Waiting Supplier</h3>
+            <p>{{ waiting }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Approved</h3>
+            <p>{{ approved }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Alerts</h3>
+            <p>{{ alerts_count }}</p>
+        </div>
+    </div>
+
+    <h2>🚨 Cotações em alerta</h2>
+
+    {% if alerts %}
+    {% for q in alerts %}
+    <div class="alert">
+        <strong>ID:</strong> {{ q.id }} <br>
+        <strong>Status:</strong> {{ q.status }} <br>
+        <strong>Abertura:</strong> {{ q.opened_at }}
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>Nenhuma cotação em alerta 🎉</p>
+    {% endif %}
+
+</body>
+
+</html>
