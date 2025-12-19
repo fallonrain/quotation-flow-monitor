@@ -29,16 +29,18 @@ Este projeto simula esse cenário e oferece visibilidade sobre o estado das cota
 
 ---
 
-## 🧱 Arquitetura
+## 🏗️ Arquitetura
 
 O projeto segue separação de responsabilidades:
 
-  app/
-  ├── main.py # API e rotas
-  ├── services.py # Regras de negócio
-  ├── database.py # Conexão com banco
-  ├── models.py # Modelos de domínio
-  └── templates/ # Dashboard HTML
+```text
+app/
+├── main.py        # API e rotas
+├── services.py    # Regras de negócio
+├── database.py    # Conexão com banco
+├── models.py      # Modelos de domínio
+└── templates/     # Dashboard HTML
+
 
 yaml
 Copy code
