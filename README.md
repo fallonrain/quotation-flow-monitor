@@ -10,9 +10,9 @@ O objetivo é identificar cotações paradas aguardando ação do fornecedor e g
 
 Em fluxos de compras B2B, cotações podem ficar abertas por longos períodos sem retorno do fornecedor, impactando:
 
-- tempo de negociação
-- eficiência do processo
-- tomada de decisão
+- Tempo de negociação  
+- Eficiência do processo  
+- Tomada de decisão  
 
 Este projeto simula esse cenário e oferece visibilidade sobre o estado das cotações.
 
@@ -20,12 +20,12 @@ Este projeto simula esse cenário e oferece visibilidade sobre o estado das cota
 
 ## 🧠 Funcionalidades
 
-- Criação de cotações
-- Listagem e filtro por status
-- Persistência de dados com SQLite
-- Monitoramento de SLA (cotações paradas)
-- Endpoint de alertas
-- Dashboard simples para visualização
+- Criação de cotações  
+- Listagem e filtro por status  
+- Persistência de dados com SQLite  
+- Monitoramento de SLA (cotações paradas)  
+- Endpoint de alertas  
+- Dashboard simples para visualização  
 
 ---
 
@@ -33,11 +33,11 @@ Este projeto simula esse cenário e oferece visibilidade sobre o estado das cota
 
 Atualmente, o sistema aceita apenas os seguintes status padronizados:
 
-- `WAITING_SUPPLIER` — Cotação aberta aguardando retorno do fornecedor
-- `APPROVED` — Cotação aprovada
-- `REJECTED` — Cotação rejeitada
+- `WAITING_SUPPLIER` — Cotação aberta aguardando retorno do fornecedor  
+- `APPROVED` — Cotação aprovada  
+- `REJECTED` — Cotação rejeitada  
 
-Esses valores são validados pela API e qualquer status fora desse padrão será rejeitado.
+Esses valores são validados pela API. Qualquer status fora desse padrão será rejeitado.
 
 ---
 
@@ -49,30 +49,33 @@ Esses valores são validados pela API e qualquer status fora desse padrão será
 
 POST /quotations
 
+graphql
+Copy code
 
 **Query Params:**
 
-
 status=WAITING_SUPPLIER
 
+css
+Copy code
 
 **Exemplo de resposta:**
+
 ```json
 {
   "message": "Quotation created"
 }
-
 📥 Exemplo de alerta
-### Consultar alertas de SLA
+Consultar alertas de SLA
+Endpoint:
 
-**Endpoint:**
-
-
+bash
+Copy code
 GET /alerts?sla_hours=24
+Exemplo de resposta:
 
-
-**Exemplo de resposta:**
-```json
+json
+Copy code
 {
   "sla_hours": 24,
   "total_alerts": 1,
@@ -84,38 +87,33 @@ GET /alerts?sla_hours=24
     }
   ]
 }
----
-
-## 🏗️ Arquitetura
-
+🏗️ Arquitetura
 O projeto segue separação de responsabilidades:
 
-```text
+text
+Copy code
 app/
 ├── main.py        # API e rotas
 ├── services.py    # Regras de negócio
 ├── database.py    # Conexão com banco
 ├── models.py      # Modelos de domínio
 └── templates/     # Dashboard HTML
-
-
 Essa organização facilita manutenção, testes e evolução futura.
 
----
+⚙️ Tecnologias utilizadas
+Python 3.12
 
-## ⚙️ Tecnologias utilizadas
+FastAPI
 
-- Python 3.12
-- FastAPI
-- SQLite
-- Jinja2
-- Uvicorn
+SQLite
 
----
+Jinja2
 
-## 🚀 Como executar localmente
+Uvicorn
 
-```bash
+🚀 Como executar localmente
+bash
+Copy code
 pip install -r requirements.txt
 uvicorn app.main:app --reload
 Acesse:
@@ -134,5 +132,5 @@ Métricas de SLA por status
 Exportação de dados
 
 👩‍💻 Autor
-Projeto desenvolvido por Thiago Fernandes
-Voltado a estudos de backend, arquitetura e produtos B2B.
+Projeto desenvolvido por Thiago Fernandes,
+voltado a estudos de backend, arquitetura e produtos B2B.
