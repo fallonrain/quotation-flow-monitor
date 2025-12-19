@@ -29,6 +29,63 @@ Este projeto simula esse cenário e oferece visibilidade sobre o estado das cota
 
 ---
 
+## 📌 Status disponíveis para cotações
+
+Atualmente, o sistema aceita apenas os seguintes status padronizados:
+
+- `WAITING_SUPPLIER` — Cotação aberta aguardando retorno do fornecedor
+- `APPROVED` — Cotação aprovada
+- `REJECTED` — Cotação rejeitada
+
+Esses valores são validados pela API e qualquer status fora desse padrão será rejeitado.
+
+---
+
+## 📤 Exemplo de requisição
+
+### Criar uma cotação
+
+**Endpoint:**
+
+POST /quotations
+
+
+**Query Params:**
+
+
+status=WAITING_SUPPLIER
+
+
+**Exemplo de resposta:**
+```json
+{
+  "message": "Quotation created"
+}
+
+📥 Exemplo de alerta
+### Consultar alertas de SLA
+
+**Endpoint:**
+
+
+GET /alerts?sla_hours=24
+
+
+**Exemplo de resposta:**
+```json
+{
+  "sla_hours": 24,
+  "total_alerts": 1,
+  "alerts": [
+    {
+      "id": 1,
+      "status": "WAITING_SUPPLIER",
+      "opened_at": "2025-01-18T10:00:00"
+    }
+  ]
+}
+---
+
 ## 🏗️ Arquitetura
 
 O projeto segue separação de responsabilidades:
