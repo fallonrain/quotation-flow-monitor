@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from app.database import get_connection
+from app.models import QuotationStatus
 
 
 def init_db():
@@ -18,13 +19,13 @@ def init_db():
     conn.close()
 
 
-def add_quotation(status: str):
+def add_quotation(status: QuotationStatus):
     conn = get_connection()
     cursor = conn.cursor()
 
     cursor.execute(
         "INSERT INTO quotations (status, opened_at) VALUES (?, ?)",
-        (status, datetime.now().isoformat())
+        (status.value, datetime.now().isoformat())
     )
 
     conn.commit()

@@ -4,6 +4,8 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
 from app.services import get_stale_quotations
+from app.models import QuotationStatus
+
 
 app = FastAPI(title="Quotation Flow Monitor")
 templates = Jinja2Templates(directory="app/templates")
@@ -14,7 +16,7 @@ def startup():
     init_db()
 
 @app.post("/quotations")
-def create_quotation(status: str):
+def create_quotation(status: QuotationStatus):
     add_quotation(status)
     return {"message": "Quotation created"}
 
