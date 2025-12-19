@@ -99,9 +99,6 @@ app/
 └── templates/     # Dashboard HTML
 
 
-yaml
-Copy code
-
 Essa organização facilita manutenção, testes e evolução futura.
 
 ---
